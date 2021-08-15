@@ -1,0 +1,15 @@
+<%= render partial: 'layouts/navibar', locals: { boards: @boards } %>
+<div class="bg-success">
+  <div class="card-deck  p-2">
+    <% @boards.each do |item| %>
+    <div class="card">
+      <div class="card-body">
+      <%= link_to board_path(item.id) do %>
+        <h4 class="card-text"><%= item.title %></h4>
+      <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= paginate @boards %>
+</div>

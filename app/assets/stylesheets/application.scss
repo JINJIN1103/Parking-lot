@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+.board_lists{
+  display: flex;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+}
+
+.board_list{
+  min-width: 400px;
+}
+
+.board_list_task{
+  min-width: 300px;
+}
