@@ -2,22 +2,22 @@
   <div class=" m-0">
     　<div class="text-center">
         <h5>簡単メモ書き</h5>
-        <%= form_with url: boards_path, local:true do |f| %>
+          <%= form_with url: board_list_tasks_m_path, local:true do |f| %>
         <ul class="form-group">
-          タイトル：<%= f.text_field :title %> 内容：<%= f.text_field :introduction %> <%= f.submit 'タスク作成' %>
+            タスクname：<%= f.text_field :title_t %> <%= f.submit 'タスク作成' %>
         </ul>
         <% end %>
       </div>
-      <div>
-        <div class="pl-3 text-center">未分類タスク</div>
-        <div class="text-center">
-          <% boards.each do |item| %>
-            <tr>
-              <%= link_to board_path(item.id) do %>
-              <%= item.title %>
-              <% end %>
-            </tr>
-          <% end %>
-         </div>
-      </div>
+      <!--<div>-->
+      <!--  <div class="pl-3 text-center">未分類タスク</div>-->
+      <!--  <div class="text-center">-->
+      <!--    < boards.each do |item| %>-->
+      <!--      <tr>-->
+      <!--        <= link_to board_path(item.id) do %>-->
+      <!--        <= item.title %>-->
+      <!--        < end %>-->
+      <!--      </tr>-->
+      <!--    < end %>-->
+      <!--   </div>-->
+      <!--</div>-->
   </div>

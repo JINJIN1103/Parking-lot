@@ -1,8 +1,36 @@
-<%= render partial: 'layouts/navibar', locals: { boards: @boards } %>
+<%= render partial: 'layouts/navibar', locals: {board: @board } %>
+
+<!--カレンダー-->
+<div class="m-5">
+<%= month_calendar events: @tasks do |date, tasks| %>
+  <%= date.day %>
+
+  <% tasks.each do |task| %>
+    <div>
+      <%= task.title_t %>
+    </div>
+  <% end %>
+<% end %>
+</div>
+<!--カレンダー-->
+
+<!--ボード新規作成-->
+<div>
+  <div class="text-center">
+      <%= form_with url: boards_path, local:true do |f| %>
+      <ul class="form-group">
+      ボードname：<%= f.text_field :title %> <%= f.submit 'ボード作成' %>
+      </ul>
+      <% end %>
+  </div>
+</div>
+<!--ボード新規作成-->
+
+<!--ボード一覧-->
 <div class="bg-success">
-  <div class="card-deck  p-2">
+  <div class="card-deck  p-2 board_lists">
     <% @boards.each do |item| %>
-    <div class="card">
+    <div class="card board_list">
       <div class="card-body">
       <%= link_to board_path(item.id) do %>
         <h4 class="card-text"><%= item.title %></h4>
@@ -13,3 +41,4 @@
   </div>
   <%= paginate @boards %>
 </div>
+<!--ボード一覧-->

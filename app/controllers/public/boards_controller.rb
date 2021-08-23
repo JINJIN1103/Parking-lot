@@ -1,6 +1,8 @@
 class Public::BoardsController < ApplicationController
   def index
-    @boards=Board.page(params[:page]).reverse_order
+    @user = current_customer
+    @tasks= @user.tasks.page(params[:page]).reverse_order
+    @boards= @user.boards.page(params[:page]).reverse_order
   end
 
   def new

@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
-  
-  namespace :public do
-    get 'tasks/index'
-    get 'tasks/new'
-    get 'tasks/show'
-    get 'tasks/edit'
-  end
   root :to => 'public/homes#top'
+  post '/create_task_m', to: 'public/tasks#create_m', as: 'board_list_tasks_m'
   
   scope module: :public do
     resources :boards do

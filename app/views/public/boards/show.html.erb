@@ -32,16 +32,25 @@
           <%= form_with url: board_list_tasks_path(list.board_id,list.id), local:true do |f| %>
           <ul class="form-group">
             <div>
-              タスクname：<%= f.text_field :title_t %> <%= f.submit 'タスク作成' %>
+              <%= f.label :task_name %>
+              <%= f.text_field :title_t %>
+              <div><%= f.label :開始日時 %></div>
+              <%= f.datetime_select :start_time %>
+              <div><%= f.label :終了日時 %></div>
+              <%= f.datetime_select :end_time %>
+              <%= f.submit 'タスク作成' %>
             </div>
           </ul>
           <% end %>
           <div class="mt-2 ">
             <div class="card-deck  p-2">
               <% list.tasks.each do |task| %>
-               <div class="card board_list_task">
+               <div class="card board_list_task mb-3">
                   <div class="card-body">
-                    <h4 class="card-text"><%= task.title_t%></h4>
+                    <!--truncateを1０文字以上の場合...で省略される -->
+                    <h4 class="card-text"><%= truncate(task.title_t, length: 13)  %></h4>
+                    <td><%= task.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+                    <td><%= task.end_time.strftime("%Y-%m-%d %H:%M") %></td>
                   </div>
               </div>
               <% end %>

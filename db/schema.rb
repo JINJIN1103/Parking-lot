@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2021_08_15_071419) do
   create_table "tasks", force: :cascade do |t|
     t.string "title_t"
     t.string "introduction_t"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.boolean "is_finish_t", default: false, null: false
     t.integer "customer_id"
     t.integer "board_id"
