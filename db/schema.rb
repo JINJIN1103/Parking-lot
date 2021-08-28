@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_15_071419) do
+ActiveRecord::Schema.define(version: 2021_08_26_041504) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 2021_08_15_071419) do
     t.string "image_id"
     t.text "introduction"
     t.boolean "is_finish", default: false, null: false
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -53,6 +60,23 @@ ActiveRecord::Schema.define(version: 2021_08_15_071419) do
     t.integer "customer_id"
     t.integer "board_id"
     t.boolean "is_finish_", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "memos", force: :cascade do |t|
+    t.text "memo"
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.string "title_r"
+    t.string "image_id"
+    t.text "introduction_r"
+    t.integer "customer_id"
+    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

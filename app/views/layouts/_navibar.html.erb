@@ -1,23 +1,21 @@
-<div>
-  <div class=" m-0">
+<div class="bg-secondary">
+  <div class="m-0">
     　<div class="text-center">
-        <h5>簡単メモ書き</h5>
-          <%= form_with url: board_list_tasks_m_path, local:true do |f| %>
-        <ul class="form-group">
-            タスクname：<%= f.text_field :title_t %> <%= f.submit 'タスク作成' %>
-        </ul>
-        <% end %>
+        <%= form_with url: memo_path, local:true do |f| %>
+        <div>
+          <div><%= f.text_area :memo, :size=>"100x1" %></div>
+          <div><%= f.submit 'メモ書き' %></div>
+          <% end %>
+        </div>
+      <div>
+        <div class="text-center">
+          <% memos.each do |f| %>
+            <tr>
+              <%= f.memo %><%="　"%>
+            </tr>
+          <% end %>
+         </div>
       </div>
-      <!--<div>-->
-      <!--  <div class="pl-3 text-center">未分類タスク</div>-->
-      <!--  <div class="text-center">-->
-      <!--    < boards.each do |item| %>-->
-      <!--      <tr>-->
-      <!--        <= link_to board_path(item.id) do %>-->
-      <!--        <= item.title %>-->
-      <!--        < end %>-->
-      <!--      </tr>-->
-      <!--    < end %>-->
-      <!--   </div>-->
-      <!--</div>-->
+      </div>
+    </div>
   </div>

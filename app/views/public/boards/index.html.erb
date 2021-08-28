@@ -1,4 +1,4 @@
-<%= render partial: 'layouts/navibar', locals: {board: @board } %>
+<%= render partial: 'layouts/navibar', locals: {memos: @memos } %>
 
 <!--カレンダー-->
 <div class="m-5">
@@ -7,7 +7,7 @@
 
   <% tasks.each do |task| %>
     <div>
-      <%= task.title_t %>
+     ・<%= task.title_t %>
     </div>
   <% end %>
 <% end %>

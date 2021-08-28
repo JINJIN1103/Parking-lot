@@ -7,4 +7,7 @@ class Customer < ApplicationRecord
   has_many :boards
   has_many :lists
   has_many :tasks
+  has_many :memos
+  has_many :diaries
+  has_many :reports
 end

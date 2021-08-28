@@ -1,7 +1,8 @@
 class Public::BoardsController < ApplicationController
   def index
+    @memos= Memo.where(customer_id: current_customer)
+    @tasks= Task.where(customer_id: current_customer)
     @user = current_customer
-    @tasks= @user.tasks.page(params[:page]).reverse_order
     @boards= @user.boards.page(params[:page]).reverse_order
   end
 
@@ -9,7 +10,7 @@ class Public::BoardsController < ApplicationController
   end
 
   def show
-    @boards = Board.all
+    @memos= Memo.where(customer_id: current_customer)
     @board = Board.find(params[:id])
   end
 

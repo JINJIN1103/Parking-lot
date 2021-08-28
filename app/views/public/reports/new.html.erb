@@ -1,0 +1,54 @@
+<%= render partial: 'layouts/navibar', locals: {memos: @memos } %>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 px-5">
+    <h2 class="mt-5">レポート新規作成</h2>
+      <%= form_with model:@report,url: reports_path,  local:true do |f| %>
+      <table>
+        <thead></thead>
+          <tbody>
+            <tr>
+              <div class="form-group">
+                <td><%= f.label :タイトル %></td>
+                <td><%= f.text_field :title_r, placeholder: "タイトル" %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="form-group">
+                <td><%= f.label :カテゴリー %></td>
+                <td><%= f.collection_select(:category_id, Category.all, :id, :name, :prompt => "選択してください" ) %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="form-group">
+                <td><%= f.label :内容 %></td>
+                <td><%= f.text_area :introduction_r, placeholder: "ここに内容を記述します", :size=>"90x15" %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="form-group">
+                <td><%= f.label :画像 %></td>
+                <td><%= f.attachment_field :image, class: "form-control-file image" %></td>
+              </div>
+            </tr>
+            <tr>
+              <div class="form-group">
+                <td><%= f.submit '執筆完了', class: 'btn btn-success' %></td>
+              </div>
+            </tr>
+
+      <!--<div class="form-group">-->
+
+      <!--  <= f.label :販売ステータス %>-->
+      <!--  <= f.radio_button "is_sale","販売中", checked: true%>-->
+      <!--  <= f.label "is_sale", "販売中" %>-->
+      <!--  <= f.radio_button "is_sale","販売停止中" %>-->
+      <!--  <= f.label "is_sale", "販売停止中" %>-->
+
+      <!--</div>-->
+        </tbody>
+      </table>
+      <% end %>
+  </div>
+ </div>
+</div>
