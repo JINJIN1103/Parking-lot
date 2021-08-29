@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_041504) do
+ActiveRecord::Schema.define(version: 2021_08_28_081520) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(version: 2021_08_26_041504) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "report_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "customer_id"
+    t.integer "report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reports", force: :cascade do |t|
     t.string "title_r"
     t.string "image_id"
@@ -79,6 +87,23 @@ ActiveRecord::Schema.define(version: 2021_08_26_041504) do
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "report_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_tag_maps_on_report_id"
+    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_tags_on_customer_id"
   end
 
   create_table "tasks", force: :cascade do |t|

@@ -1,0 +1,24 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>タスク名</th>
+      <th>内容</th>
+      <th>開始日時</th>
+      <th>終了日時</th>
+      <th>ステータス</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% tasks.each do |task| %>
+      <tr>
+        <td><%= task.title_t %></td>
+        <td><%= task.introduction_t %></td>
+        <td><%= task.start_time.to_s(:datetime_jp) %></td>
+        <td><%= task.end_time.to_s(:datetime_jp) %></td>
+        <td><%= task.is_finish_t %></td>
+        <td><%= link_to 'Show',board_path(task.board.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

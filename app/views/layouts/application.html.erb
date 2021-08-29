@@ -16,7 +16,6 @@
          <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
             <li><%= link_to 'Top', root_path,class: "btn btn-sm text-dark fas fa-home " %></li>
-            <li><%= link_to 'About', boards_path,class: "btn btn-sm text-dark fas fa-home " %></li>
             <li><%= link_to 'Board', boards_path,class: "btn btn-sm text-dark fas fa-home " %></li>
             <li><%= link_to 'Report', reports_path,class: "btn btn-sm text-dark fas fa-home " %></li>
             <li><%= link_to 'Sign_out', destroy_customer_session_path, method: :delete,class: "btn btn-sm text-dark " %></li>
@@ -33,6 +32,7 @@
        </div>
       </nav>
     </header>
+
     <main>
     <%= yield %>
     </main>

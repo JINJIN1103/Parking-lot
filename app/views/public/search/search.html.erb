@@ -1,0 +1,11 @@
+<%= render partial: 'layouts/searchbar'%>
+<%= render partial: 'layouts/navibar', locals: {memos: @memos } %>
+<div class="m-5">
+  <% if @model == 'task' %>
+  	<h3>Tasks search for "<%= @content %>"</h3>
+    <%= render 'tasks_search', tasks: @records %>
+  <% elsif @model == 'report' %>
+  	<h3>Reports search for "<%= @content %>"</h3>
+    <%= render 'reports_search', reports: @records %>
+  <% end %>
+</div>

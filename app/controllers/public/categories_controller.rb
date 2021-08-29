@@ -3,7 +3,7 @@ class Public::CategoriesController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @categories = Category.all
+    @categories = Category.where(customer_id: current_customer)
     @category = Category.new
   end
 

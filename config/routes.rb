@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root :to => 'public/homes#top'
   post '/create_task_m', to: 'public/tasks#create_m', as: 'board_list_tasks_m'
   post '/create_memo', to: 'public/memos#create', as: 'memo'
-
+  get '/search' => 'public/search#search'
   scope module: :public do
     resources :categories,only: [:index, :edit ,:create,:update ]
   end
@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :reports
+    resources :reports do
+      resources :report_comments, only: [:create, :destroy]
+    end
   end
 
   devise_for :admins, controllers: {

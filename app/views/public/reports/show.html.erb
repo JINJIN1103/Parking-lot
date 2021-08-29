@@ -1,25 +1,48 @@
+<%= render partial: 'layouts/searchbar'%>
 <%= render partial: 'layouts/navibar', locals: {memos: @memos } %>
-<div class="container">
- <div class="row">
-  <div class="col-sm-12 px-5">
-    <h2 class="mt-5"><%= @report.title_r %></h2>
-    <h4><%= @report.category.name %></h4>
+<div class="mt-2 ml-5">
+  <h2><%= @report.title_r %></h2>
+  <h4 class="ml-3">カテゴリー：<%= @report.category.name %></h4>
+  <div class="ml-5">
+    <h5>
+      タグ一覧：<% @report_tags.each do |f| %>
+      <%= f.tag_name %>
+      <% end %>
+    </h5>
 
-      <div>
-        <%= attachment_image_tag(@report, :image, :fill, 300, 300, fallback: "no_image.jpg", size:'300x300') %>
-      </div>
-
-      <div>
-        <%= @report.title_r %>
-      </div>
-
-      <div>
-        <%= simple_format(h(@report.introduction_r)) %>
-      </div>
-      <div>
-        <%= link_to '編集する',edit_report_path(@report) ,class: "btn btn-sm text-dark" %>
-        <%= link_to '削除する',report_path,class: "btn btn-sm text-dark", method: :delete ,data: { confirm: '本当に消しますか？' } %>
-      </div>
   </div>
- </div>
+
+</div>
+
+<div class="container px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <div>
+        <%= attachment_image_tag(@report, :image, :fill, 1500, 1500, fallback: "no_image.jpg", size:'300x300') %>
+      </div>
+    </div>
+
+  <div class="col-md-8 offset-md-1">
+    <h5>内容</h5>
+        <div>
+          <%= simple_format(h(@report.introduction_r)) %>
+        </div>
+        <div>
+          <%= link_to '編集する',edit_report_path(@report) ,class: "btn btn-sm  btn-success" %>
+          <%= link_to '削除する',report_path,class: "btn btn-sm  btn-danger", method: :delete ,data: { confirm: '本当に消しますか？' } %>
+        </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+     <%= render partial: 'ReportComment', locals:{report: @report,report_comment: @report_comment}  %>
+  </div>
+
+  <div class="mt-1">
+    <%= form_with(model:[@report, @report_comment], local: true) do |f| %>
+      <p><%= f.text_area :comment, rows:'5',:size=>"100x1",placeholder: "コメントをここに" %></p>
+      <p><%= f.submit "コメントする" %></p>
+    <% end %>
+  </div>
+
 </div>

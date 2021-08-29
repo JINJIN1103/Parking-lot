@@ -31,6 +31,13 @@
                 <td><%= f.attachment_field :image, class: "form-control-file image" %></td>
               </div>
             </tr>
+
+            <tr>
+              <div class="form-group">
+                <td><%= "タグ" %></td>
+                <td><%=  f.text_field :tag_name %></td>
+            </tr>
+
             <tr>
               <div class="form-group">
                 <td><%= f.submit '執筆完了', class: 'btn btn-success' %></td>

@@ -1,3 +1,4 @@
+<%= render partial: 'layouts/searchbar'%>
 <%= render partial: 'layouts/navibar', locals: {memos: @memos } %>
 <div class="ml-5 mt-5">
 <h2>
@@ -8,7 +9,6 @@
   <table class='table table-hover'>
     <thead>
       <tr>
-        <th>No.</th>
         <th>ジャンル</th>
         <th>タイトル</th>
         <th>イメージ</th>
@@ -19,7 +19,6 @@
     <tbody>
     <% @reports.each do |report| %>
       <tr>
-        <td><%= report.id %></td>
         <td><%= report.category.name %></td>
         <td>
           <%= link_to report_path(report.id) do %>

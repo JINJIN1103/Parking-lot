@@ -1,0 +1,21 @@
+    <div class="comments">
+     <table>
+       <thead>
+         <tr>
+         </tr>
+       </thead>
+       <tbody>
+            <% report.report_comments.each do |f| %>
+              <tr class="mt-5">
+                <td><%= f.comment %></td>
+                <td><%= f.created_at.to_s(:datetime_jp) %></td>
+                <td>
+                  <%= link_to "Destroy", report_report_comment_path(f.report, f),class:'btn btn-sm btn-danger destroy_book_765',method: :delete,remote: true %>
+                </td>
+
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+

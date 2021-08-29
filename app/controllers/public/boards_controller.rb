@@ -7,6 +7,7 @@ class Public::BoardsController < ApplicationController
   end
 
   def new
+    @memos= Memo.where(customer_id: current_customer)
   end
 
   def show
@@ -15,6 +16,7 @@ class Public::BoardsController < ApplicationController
   end
 
   def edit
+    @memos= Memo.where(customer_id: current_customer)
   end
 
   def create
