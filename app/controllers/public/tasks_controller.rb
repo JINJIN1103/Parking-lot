@@ -9,35 +9,42 @@ class Public::TasksController < ApplicationController
   end
 
   def edit
+    @memos= Memo.where(customer_id: current_customer)
+    @board =Board.find(params[:board_id])
+    @list= List.find(params[:list_id])
+    @task= Task.find(params[:id])
+    unless
+    @task.customer == current_customer
+     redirect_to boards_path
+    end
   end
 
   def create
-    task = Task.new(task_params)
+    task = Task.new(task_params_create)
     task.customer_id = current_customer.id
     task.save
-    redirect_to boards_path
-  end
-
-  def create_m
-    task = Task.new(task_params)
-    task.board_id = 100
-    task.list_id = 100
-    task.customer_id = current_customer.id
-    task.save!
-    redirect_to boards_path
+    redirect_to board_path(task.board_id)
   end
 
   def update
+    task = Task.find(params[:id])
+    task.update(task_params_update)
+    redirect_to  board_path(task.board.id)
   end
 
   def destroy
+    task = Task.find(params[:id])
+    task.destroy
+    redirect_to  board_path(task.board_id)
   end
 
   private
-  def task_params
-    #.require(:board)をつけるとエラーになるので記載削除
+  def task_params_create
     params.permit(:title_t,:introduction_t,:start_time,:end_time,:customer_id,:board_id,:list_id)
   end
 
+  def task_params_update
+    params.require(:task).permit(:title_t,:introduction_t,:start_time,:end_time,:customer_id,:board_id,:list_id)
+  end
 
 end

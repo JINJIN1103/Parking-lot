@@ -1,17 +1,22 @@
-<div class="bg-secondary">
+<div>
   <div class="m-0">
     　<div class="text-center">
-        <%= form_with url: memo_path, local:true do |f| %>
+        <%= form_with url: memos_path, local:true do |f| %>
         <div>
           <div><%= f.text_area :memo, :size=>"100x1" %></div>
-          <div><%= f.submit 'メモ書き' %></div>
+          <div>
+            <%= f.submit 'メモ投稿' %>
+            <%= link_to "メモ管理", memos_path,class:'btn btn-sm btn-success' %>
+
           <% end %>
         </div>
       <div>
         <div class="text-center">
           <% memos.each do |f| %>
-            <tr>
-              <%= f.memo %><%="　"%>
+            <tr class="ml-3">
+              <td>
+                <%= f.memo %> <%="　"%>
+              </td>
             </tr>
           <% end %>
          </div>

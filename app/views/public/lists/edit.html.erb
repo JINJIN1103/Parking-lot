@@ -1,2 +1,15 @@
-<h1>Public::Lists#edit</h1>
-<p>Find me in app/views/public/lists/edit.html.erb</p>
+<div class="ml-5">
+  <h2 class="mb-5">リスト編集</h2>
+  <div>
+    <%= form_with(model:[@board, @list], local: true) do |f| %>
+    <div class="form-group">
+      <label for="リスト名前">リスト名前</label>
+        <%= f.text_field :title_l %>
+    </div>
+    <%= f.submit "変更を保存", class: "btn btn-success" %></p>
+    <% end %>
+  </div>
+</div>
+
+
+

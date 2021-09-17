@@ -1,0 +1,25 @@
+<%= render 'layouts/error', errorinstance: @memo %>
+<table class='table w-50 mt-5 table-hover'>
+  <thead>
+    <tr>
+      <th>メモ</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @memos.each do |f| %>
+    <tr>
+      <td><%= f.memo %></td>
+      <td>
+        <%= link_to "削除する", memo_path(f.id),class:'btn btn-sm btn-danger', method: :delete ,data: { confirm: '本当に消しますか？' } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+
+
+</table>
+
+</div>
+

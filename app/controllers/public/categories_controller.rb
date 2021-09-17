@@ -1,10 +1,10 @@
 class Public::CategoriesController < ApplicationController
-
   before_action :authenticate_customer!
 
   def index
     @categories = Category.where(customer_id: current_customer)
     @category = Category.new
+    @memos= Memo.where(customer_id: current_customer)
   end
 
   def create
@@ -14,13 +14,16 @@ class Public::CategoriesController < ApplicationController
       flash[:notice] = "カテゴリーの登録が完了しました"
       redirect_to categories_path
     else
-       @categories = Category.all
-       render :index
+      @categories = Category.where(customer_id: current_customer)
+      @category = Category.new
+      @memos= Memo.where(customer_id: current_customer)
+      render :index
     end
   end
 
   def edit
     @category = Category.find(params[:id])
+    @memos= Memo.where(customer_id: current_customer)
   end
 
   def update
@@ -29,6 +32,8 @@ class Public::CategoriesController < ApplicationController
       flash[:notice] = "ジャンルの更新が完了しました"
       redirect_to categories_path
     else
+      @category = Category.find(params[:id])
+      @memos= Memo.where(customer_id: current_customer)
       render :edit
     end
   end

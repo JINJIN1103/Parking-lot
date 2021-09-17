@@ -1,4 +1,3 @@
-<%= render partial: 'layouts/navibar', locals: {memos: @memos } %>
 <div class="container">
  <div class="row">
   <div class="col-sm-12 px-5">
@@ -10,13 +9,13 @@
             <tr>
               <div class="form-group">
                 <td><%= f.label :タイトル %></td>
-                <td><%= f.text_field :title_r, placeholder: "タイトル" %></td>
+                <td><%= f.text_field :title_r, placeholder: "タイトル" %> ※タイトル未入力の場合投稿出来ません</td>
               </div>
             </tr>
             <tr>
               <div class="form-group">
                 <td><%= f.label :カテゴリー %></td>
-                <td><%= f.collection_select(:category_id, Category.all, :id, :name, :prompt => "選択してください" ) %></td>
+                <td><%= f.collection_select(:category_id, Category.where(customer_id: current_customer), :id, :name, :prompt => "選択してください" ) %> ※カテゴリー未選択の場合投稿できません。カテゴリー未作成の場合、まずカテゴリーの作成をお願いします</td>
               </div>
             </tr>
             <tr>
@@ -33,29 +32,29 @@
             </tr>
 
             <tr>
-              <div class="form-group">
-                <td><%= "タグ" %></td>
-                <td><%=  f.text_field :tag_name %></td>
+              <td><%= "タグ一覧" %></td>
+              <td>
+                <% @tag_list.each do |list| %>
+                <%= list.tag_name %>
+                <% end %>
+              </td>
             </tr>
 
             <tr>
               <div class="form-group">
-                <td><%= f.submit '執筆完了', class: 'btn btn-success' %></td>
-              </div>
+                <td><%= "タグ" %></td>
+                <td><%=  f.text_field :tag_name %> スペースを入力することで複数のタグを付けることができます。</td>
             </tr>
 
-      <!--<div class="form-group">-->
-
-      <!--  <= f.label :販売ステータス %>-->
-      <!--  <= f.radio_button "is_sale","販売中", checked: true%>-->
-      <!--  <= f.label "is_sale", "販売中" %>-->
-      <!--  <= f.radio_button "is_sale","販売停止中" %>-->
-      <!--  <= f.label "is_sale", "販売停止中" %>-->
-
-      <!--</div>-->
+            <tr>
+              <div class="form-group">
+                <td><%= f.submit '投稿する', class: 'btn btn-success' %></td>
+              </div>
+            </tr>
         </tbody>
       </table>
       <% end %>
   </div>
+
  </div>
 </div>

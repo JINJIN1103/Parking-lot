@@ -3,6 +3,7 @@ class Task < ApplicationRecord
   belongs_to :board
   belongs_to :list
 
+
   def self.search_for(content, method)
     if method == 'perfect'
       Task.where(title_t: content)

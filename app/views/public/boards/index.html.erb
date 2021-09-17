@@ -1,21 +1,5 @@
-<%= render partial: 'layouts/searchbar'%>
-<%= render partial: 'layouts/navibar', locals: {memos: @memos } %>
-
-<!--カレンダー-->
-<div class="m-5">
-<%= month_calendar events: @tasks do |date, tasks| %>
-  <%= date.day %>
-
-  <% tasks.each do |task| %>
-    <div>
-     ・<%= task.title_t %>
-    </div>
-  <% end %>
-<% end %>
-</div>
-<!--カレンダー-->
-
 <!--ボード新規作成-->
+<%= render 'layouts/error', errorinstance: @board %>
 <div>
   <div class="text-center">
       <%= form_with url: boards_path, local:true do |f| %>
@@ -43,3 +27,17 @@
   <%= paginate @boards %>
 </div>
 <!--ボード一覧-->
+
+<!--カレンダー-->
+<div class="m-5">
+<%= month_calendar events: @tasks do |date, tasks| %>
+  <%= date.day %>
+
+  <% tasks.each do |task| %>
+    <div>
+     ・<%= task.title_t %>
+    </div>
+  <% end %>
+<% end %>
+</div>
+<!--カレンダー-->

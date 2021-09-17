@@ -7,6 +7,8 @@ class Report < ApplicationRecord
 
     attachment :image
 
+    validates :title_r, presence: true
+
  def save_tag(sent_tags,customer_id)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags

@@ -1,10 +1,8 @@
-<%= render partial: 'layouts/searchbar'%>
-<%= render partial: 'layouts/navibar', locals: {memos: @memos } %>
 <div class="ml-5 mt-5">
 <h2>
   <td>レポート一覧</td>
-  <td><%= link_to '＋',  new_report_path,class: "btn btn-outline-secondary text-dark" %></td>
-  <td><%= link_to 'カテゴリー一覧へ',  categories_path,class: "btn btn-outline-secondary text-dark" %></td>
+  <td><%= link_to 'レポート新規作成',  new_report_path,class: "btn btn-outline-secondary text-dark" %></td>
+  <td><%= link_to 'カテゴリー作成',  categories_path,class: "btn btn-outline-secondary text-dark" %></td>
 </h2>
   <table class='table table-hover'>
     <thead>

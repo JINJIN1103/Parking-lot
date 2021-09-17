@@ -1,8 +1,9 @@
+<%= render 'layouts/error', errorinstance: @category %>
 <div class="ml-5">
 <h2 class="mb-5">カテゴリー</h2>
 <div class="form-group">
   <%= form_with model:@categories,url: categories_path,  local:true do |f| %>
-  <p>カテゴリー名　　<%= f.text_field :name, placeholder: "ジャンル名" %>　　<%= f.submit "新規登録", class: "btn btn-success" %></p>
+  <p>カテゴリー名　　<%= f.text_field :name, placeholder: "カテゴリー名" %>　　<%= f.submit "新規登録", class: "btn btn-success" %></p>
   <% end %>
 
 </div>
@@ -11,7 +12,7 @@
 <table class='table w-50 mt-5 table-hover'>
   <thead>
     <tr>
-      <th>ジャンル</th>
+      <th>名前</th>
       <th></th>
     </tr>
   </thead>

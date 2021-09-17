@@ -8,6 +8,7 @@ class Public::ReportsController < ApplicationController
 
   def new
   @memos= Memo.where(customer_id: current_customer)
+  @tag_list= Tag.where(customer_id: current_customer)
   @report = Report.new
   end
 
@@ -16,24 +17,50 @@ class Public::ReportsController < ApplicationController
     @report = Report.new(report_params)
     @report.customer_id = current_customer.id
     @tag_list = params[:report][:tag_name].split(nil)
-    if @report.save!
+    if @report.save
        @report.save_tag(@tag_list,customer_id)
-      flash[:notice] = "レポートを作成しました"
       redirect_to reports_path
     else
+      @memos= Memo.where(customer_id: current_customer)
+      @tag_list= Tag.where(customer_id: current_customer)
+      @report = Report.new
       render :new
     end
   end
 
   def show
-    @memos= Memo.where(customer_id: current_customer)
     @report = Report.find(params[:id])
+    unless
+    @report.customer == current_customer
+     redirect_to reports_path
+    end
+
+    @memos= Memo.where(customer_id: current_customer)
     @report_tags = @report.tags
     @report_comment = ReportComment.new
   end
 
   def edit
     @memos= Memo.where(customer_id: current_customer)
+    @tag_list= Tag.where(customer_id: current_customer)
+
+    @report = Report.find(params[:id])
+    unless
+    @report.customer == current_customer
+     redirect_to reports_path
+    end
+  end
+
+  def update
+    @report = Report.find(params[:id])
+    if @report.update(report_params)
+      redirect_to  report_path(@report.id)
+    else
+      @memos= Memo.where(customer_id: current_customer)
+      @tag_list= Tag.where(customer_id: current_customer)
+      @report = Report.find(params[:id])
+    render :edit
+    end
   end
 
   def destroy
@@ -43,12 +70,9 @@ class Public::ReportsController < ApplicationController
   end
 
   private
+
   def report_params
     params.require(:report).permit(:image, :title_r, :introduction_r, :category_id,)
   end
-
-
-
-
 
 end

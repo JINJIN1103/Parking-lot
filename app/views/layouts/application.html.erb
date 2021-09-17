@@ -16,9 +16,9 @@
          <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
             <li><%= link_to 'Top', root_path,class: "btn btn-sm text-dark fas fa-home " %></li>
-            <li><%= link_to 'Board', boards_path,class: "btn btn-sm text-dark fas fa-home " %></li>
-            <li><%= link_to 'Report', reports_path,class: "btn btn-sm text-dark fas fa-home " %></li>
-            <li><%= link_to 'Sign_out', destroy_customer_session_path, method: :delete,class: "btn btn-sm text-dark " %></li>
+            <li><%= link_to 'Board', boards_path,class: "btn btn-sm text-dark fas fa-chalkboard " %></li>
+            <li><%= link_to 'Report', reports_path,class: "btn btn-sm text-dark fas fa-book " %></li>
+            <li><%= link_to 'Sign_out', destroy_customer_session_path, method: :delete,class: "btn btn-sm text-dark fas fa-sign-out-alt" %></li>
             <% elsif admin_signed_in? %>
             <li><%= link_to 'TOP', root_path,class: "btn btn-sm text-dark fas fa-home " %></li>
             <li><%= link_to 'Sign_out', destroy_admin_session, method: :delete,class: "btn btn-sm text-dark " %></li>
@@ -31,6 +31,13 @@
          </ul>
        </div>
       </nav>
+     <% if customer_signed_in? %>
+       <div><%= render partial: 'layouts/searchbar'%></div>
+       <div class="mb-2"><%= render partial: 'layouts/navibar', locals: {memos: @memos } %></div>
+     <% elsif admin_signed_in? %>
+       <div><%= render partial: 'layouts/searchbar'%></div>
+       <div class="mb-2"><%= render partial: 'layouts/navibar', locals: {memos: @memos } %></div>
+    <% end %>
     </header>
 
     <main>

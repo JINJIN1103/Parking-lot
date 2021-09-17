@@ -17,7 +17,7 @@
         <td><%= task.start_time.to_s(:datetime_jp) %></td>
         <td><%= task.end_time.to_s(:datetime_jp) %></td>
         <td><%= task.is_finish_t %></td>
-        <td><%= link_to 'Show',board_path(task.board.id) %></td>
+        <td><%= link_to 'Show',board_path(task.board_id) %></td>
       </tr>
     <% end %>
   </tbody>

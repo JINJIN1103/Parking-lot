@@ -6,9 +6,11 @@ class Public::SearchController < ApplicationController
 		@content = params[:content]
 		@method = params[:method]
 		if @model == 'task'
-			@records = Task.search_for(@content, @method)
+			@task = Task.where(customer_id: current_customer)
+			@records = @task.search_for(@content, @method)
 		else
-			@records = Report.search_for(@content, @method)
+			@report= Report.where(customer_id: current_customer)
+			@records = @report.search_for(@content, @method)
 		end
   end
 

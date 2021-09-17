@@ -1,26 +1,39 @@
-<h2>顧客　ログインLog in</h2>
+<div class="ml-5">
+<h2 class="mb-4">ログイン </h2>
+<h4 class="ml-5">会員の方はこちらからログイン</h4>
+<%= flash[:error] %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <table class="ml-5">
+    <thead></thead>
+    <tbody>
+      <tr>
+        <div class="field">
+         <td><%= f.label :"メールアドレス　　　" %></td>
+         <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </div>
+      </tr>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+      <tr>
+        <div class="field">
+          <td><%= f.label :"パスワード　　　　" %></td>
+          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </div>
+      </tr>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+      <tr class="mt-5">
+        <div class="actions">
+          <td>　</td>
+          <td> <%= f.submit "ログイン",class:"btn btn-primary btn-lg btn-block" %></td>
+        </div>
+      <% end %>
+      </tr>
+    </tbody>
+  </table>
 
+<div class="mt-5 ml-5">
+<h4>会員登録がお済みでない方はこちら</h4>
 <%= render "public/customers/shared/links" %>
+</div>
+</div>

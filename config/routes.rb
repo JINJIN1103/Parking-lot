@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   root :to => 'public/homes#top'
-  post '/create_task_m', to: 'public/tasks#create_m', as: 'board_list_tasks_m'
-  post '/create_memo', to: 'public/memos#create', as: 'memo'
   get '/search' => 'public/search#search'
+
   scope module: :public do
     resources :categories,only: [:index, :edit ,:create,:update ]
+  end
+
+  scope module: :public do
+    resources :memos
   end
 
   scope module: :public do
