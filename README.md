@@ -5,9 +5,9 @@
 
 
 ### サイトテーマ
-「パーキングロット」と「エンジニアのための時間管理術」の思想を活用し、マルチタスクを防止することで最大限生産性を上げる。
+「パーキングロット」と「エンジニアのための時間管理術」の思想を活用し、マルチタスクを防止することで最大限生産性を上げる。<br>
 ・パーキングロット（https://backlog.com/ja/blog/what-is-parking-lot-in-agile/#Parking-lot-2）<br>
-・エンジニアのための時間管理術（の要約）（https://kakakakakku.hatenablog.com/entry/2020/04/21/091104）
+・エンジニアのための時間管理術（の要約）（https://kakakakakku.hatenablog.com/entry/2020/04/21/091104）<br>
 
 
 ### このサイトで出来ること
